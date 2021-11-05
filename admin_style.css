@@ -1,0 +1,65 @@
+body, html {
+    height: 100%;
+    font-family: Arial;
+}
+
+  /* Style tab links */
+  .header{
+      display: flex;
+      justify-content: space-between;
+  }
+  .header .right, .header .left{
+      display: flex;
+      justify-content:space-between;
+  }
+  .header .left .tablink , .header .right .tablink{
+    background-color: #888;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 300px;
+    text-align: center;
+    border-radius:0 !important;
+  }
+
+  .header .right  {
+      width: 500px;
+  }
+  
+  .header .left .tablink:hover, .header .right  .tablink:hover{
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+    color:white;
+    display: none;
+    padding: 20px 20px 100px 20px;
+    height: 100%;
+    
+  }
+
+  
+  #Students {background-color: rgb(133, 199, 12);}
+  #Staff {background-color: white;
+  }
+  /********************Add modal work ************/
+  .lvl{
+    display: flex;
+    justify-content:space-around;
+    margin: 10px 0 0 0;
+  }
+
+  #header_staff{
+    width:100%;
+  }
+  #right-btn1{
+    display:none;
+  }
+  .min-box{
+    box-sizing: border-box;
+    overflow: hidden;
+  }

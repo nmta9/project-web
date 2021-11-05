@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Admin page</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="admin_style.css">
+</head>
+<body>
+
+	<div class="header" id="header">
+		<div class="left">
+			<div class="tablink" onclick="openPage('Students', this, 'rgb(133, 199, 12)')" id="defaultOpen"  >Students</div>
+			<div class="tablink" onclick="openPage('Staff', this, 'white')" >Staff</div>
+		</div>
+		<div class="right" id = "right-btn">
+				<button type="button" class="btn  tablink" data-bs-toggle="modal" data-bs-target="#Add" data-bs-whatever="@fat">Add</button>
+				<button type="button" class="btn  tablink" data-bs-toggle="modal" data-bs-target="#idx" onclick="justDelete(1)" > Update </button>
+				<button type="button" class="btn  tablink" data-bs-toggle="modal" data-bs-target="#idx" onclick="justDelete(-1)" > Delete </button>
+		  </div>
+		  <div class="right" id='right-btn1'>
+			<button type="button" class="btn  tablink" data-bs-toggle="modal" data-bs-target="#Add1" data-bs-whatever="@fat">Add</button>
+			<button type="button" class="btn  tablink" data-bs-toggle="modal" data-bs-target="#idx1"  > Delete </button>
+		</div>
+	</div>
+	
+	
+	<div id="Staff" class="tabcontent">
+		<div class="container-fluid">
+			<div class="container-fluid bg-primary active">
+				<div class="row bg-primary p-3">
+					<div class="col-2">Resgistation Num</div>
+					<div class="col-2">Name</div>
+					<div class="col-2">Gender</div>
+					<div class="col-2">Birth Date</div>
+					<div class="col-2">Department</div>
+					<div class="col-2">Email</div>
+				</div>
+			</div>
+				   <div class="list-group" id="list-group_staff">
+			 </div>
+		 </div>
+	 </div>
+
+	<div id="Students" class="tabcontent">
+		<div class="container-fluid">
+			<div class="container-fluid bg-primary active">
+				<div class="row bg-primary p-3">
+					<div class="col-2">Resgistation Num</div>
+					<div class="col-2">Name</div>
+					<div class="col-2">Gender</div>
+					<div class="col-2">Birth Date</div>
+					<div class="col-2">Department</div>
+					<div class="col-2">Email</div>
+				</div>
+			</div>
+			<div class="list-group" id="list-group">
+			</div>
+		  </div>
+	 </div>
+
+	  <!--------Add section -->
+	  
+
+<div class="modal fade" id="Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Student Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form  name="add-form" class="needs-validation" method="post" id="add-form" novalidate>
+
+
+			<div class="d-flex form-group">
+				<label for="reg-id" class="col-form-label">Student Id:</label>
+			</div>
+
+          <div class="d-flex lvl form-group">
+            <input type="number" class="form-control" id="reg_id" placeholder="reg id" required>
+          </div>
+
+			<div class="d-flex lvl">
+				<label for="first-name" class="col-form-label">First Name:</label>
+				<label for="last-name" class="col-form-label">Last Name:</label>
+			</div>
+
+
+		  <div class="row">
+			<div class="col">
+			  <input type="text" class="form-control" id="first_name" placeholder="First name" required>
+			</div>
+			<div class="col">
+			  <input type="text" class="form-control" id="last_name"  placeholder="Last name" required>
+			</div>
+		  </div>
+
+		  <div class="d-flex lvl">
+			<label for="birthday">Birthday:</label>
+		  </div>
+		  <div class="d-flex">
+			<input type="date" class="form-control" id="birthday" name="birthday" required>
+          </div>
+
+		  <div class="d-flex ">
+			<label><input value="Male" class="m-3" type="radio" name="gender" required> Male </label> 
+			<label><input type="radio" class="m-3" value="Female" name="gender" required> Female</label>
+		  </div>
+
+		  
+
+		  <div class="d-flex">
+			<select name="dept" id="dept" class="form-control" required>
+				<option value="" active>Department</option>
+				<option value="CSE">CSE</option>
+				<option value="EEE">EEE</option>
+				<option value="IICT">IICT</option>
+				<option value="BBA">BBA</option>
+				<option value="Englisht">English</option>
+				<option value="IPE">IPE</option>
+				<label value="CEP">CEP</option>'
+			  </select>
+		  </div>
+		  <div class="form-group lvl d-block">
+			<label for="exampleInputEmail1">Email address</label>
+			<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+			<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		</div>
+        <div class="container lvl d-block">
+			<button type="button" class="btn btn-secondary" onclick="addStudentClear()" data-bs-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-primary" >Add</button>
+		</div>		
+	</form>
+    </div>
+  </div>
+</div>
+
+
+
+
+  
+  <!-- Modal -->
+
+
+
+  
+  <button type="button" class="btn" id="upd1" data-bs-toggle="modal" data-bs-target="#Add" data-bs-whatever="@fat"></button>
+
+
+
+
+
+  <!----------------Update section -------->
+  
+
+
+  
+  <button type="button" class="btn" id="upd1_staff" data-bs-toggle="modal" data-bs-target="#Add" data-bs-whatever="@fat"></button>
+  </div>
+
+
+
+
+
+  <div class="modal fade" id="idx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="staticBackdropLabel">Enter Student Id No</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			<form action="updInf" id="updInf1">
+				<label for="Student Id:">Enter Student Id:</label>
+				<input type="text" class="form-control" id="reg_id" required>		 
+			  
+		  </form>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-success" onclick="updElement()" data-bs-dismiss="modal">Ok</button>
+		  </div>
+	  </div>
+	</div>
+  </div>
+
+  <div class="modal fade" id="idx1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="staticBackdropLabel">Enter Staff Id No</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			<form action="updInf" id="delInf_staff">
+				<label for="Staff Id:">Enter Staff Id:</label>
+				<input type="text" class="form-control" id="reg_id_staff" required>		 
+			  
+		  </form>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-success" onclick="deleleELement_staff()" data-bs-dismiss="modal">Ok</button>
+		  </div>
+	  </div>
+	</div>
+  </div>
+
+
+
+  <div class="modal fade" id="Add1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Staff Details</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  <form  name="add-form" class="needs-validation" method="post" id="add-form_staff" novalidate>
+  
+  
+			  <div class="d-flex form-group">
+				  <label for="reg-id" class="col-form-label">Staff Id:</label>
+			  </div>
+  
+			<div class="d-flex lvl form-group">
+			  <input type="number" class="form-control" id="reg_id_staff" placeholder="reg id" required>
+			</div>
+  
+			  <div class="d-flex lvl">
+				  <label for="first-name" class="col-form-label">First Name:</label>
+				  <label for="last-name" class="col-form-label">Last Name:</label>
+			  </div>
+  
+  
+			<div class="row">
+			  <div class="col">
+				<input type="text" class="form-control" id="first_name_staff" placeholder="First name" required>
+			  </div>
+			  <div class="col">
+				<input type="text" class="form-control"  id="last_name_staff" placeholder="Last name" required>
+			  </div>
+			</div>
+  
+			<div class="d-flex lvl">
+			  <label for="birthday">Birthday:</label>
+			</div>
+			<div class="d-flex">
+			  <input type="date" class="form-control" id="birthday_staff" name="birthday" required>
+			</div>
+  
+			<div class="d-flex ">
+			  <label><input value="Male" class="m-3" type="radio" name="gender_staff" required> Male </label> 
+			  <label><input type="radio" class="m-3" value="Female" name="gender_staff" required> Female</label>
+			</div>
+  
+			
+  
+			<div class="d-flex">
+			  <select name="dept" id="dept_staff" class="form-control" required>
+				  <option value="" active>Department</option>
+				  <option value="CSE">CSE</option>
+				  <option value="EEE">EEE</option>
+				  <option value="IICT">IICT</option>
+				  <option value="BBA">BBA</option>
+				  <option value="Englisht">English</option>
+				  <option value="IPE">IPE</option>
+				  <label value="CEP">CEP</option>'
+				</select>
+			</div>
+			<div class="form-group lvl d-block">
+			  <label for="exampleInputEmail1">Email address</label>
+			  <input type="email" class="form-control" id="email_staff" aria-describedby="emailHelp" placeholder="Enter email" required>
+			  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		  </div>
+		  <div class="container lvl d-block">
+			  <button type="button" class="btn btn-secondary" onclick="addStaffClear()" data-bs-dismiss="modal">Close</button>
+			  <button type="submit" class="btn btn-primary" >Add</button>
+		  </div>		
+	  </form>
+	  </div>
+	</div>
+  </div>
+
+
+
+
+   <!-- Modal -->
+   
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="style.js"></script>
+</body>
+</html>
+
+
+
